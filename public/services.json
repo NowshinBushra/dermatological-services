@@ -1,15 +1,15 @@
 [
     {"id": 1, 
      "img": "https://i.ibb.co/VBd2B64/Laser.jpg", 
-     "name": "Laser Dermatology", 
-     "price": "100", 
+     "name": "Laser Therapy", 
+     "price": "150", 
      "description": "Reduces wrinkles and scars, even out skin coloring, tighten your skin and remove lesions by laser skin resurfacing."
     },
 
     {"id": 2, 
         "img": "https://i.ibb.co/hV4zG0Q/Lip.jpg", 
         "name": "Lip Augmentation", 
-        "price": "100", 
+        "price": "125", 
         "description": "A skilled cosmetic surgeon can use one of many techniques to help you achieve smooth, voluptuous lips with a natural look."
     },
     {"id": 3, 

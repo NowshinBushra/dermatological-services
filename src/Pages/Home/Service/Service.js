@@ -12,7 +12,7 @@ const Service = ({ service }) => {
                 <h4>{name}</h4>
                 <p>Price: ${price}</p>
                 <p><small>{description}</small></p>
-                <button>Book Appointment</button>
+                <button>Consultation</button>
             </div>
 
         </div>
