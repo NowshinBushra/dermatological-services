@@ -1,0 +1,27 @@
+[
+    {"id": 1, 
+     "img": "https://i.ibb.co/VBd2B64/Laser.jpg", 
+     "name": "Laser Dermatology", 
+     "price": "100", 
+     "description": "Reduces wrinkles and scars, even out skin coloring, tighten your skin and remove lesions by laser skin resurfacing."
+    },
+
+    {"id": 2, 
+        "img": "https://i.ibb.co/hV4zG0Q/Lip.jpg", 
+        "name": "Lip Augmentation", 
+        "price": "100", 
+        "description": "A skilled cosmetic surgeon can use one of many techniques to help you achieve smooth, voluptuous lips with a natural look."
+    },
+    {"id": 3, 
+        "img": "https://i.ibb.co/bQsdL6t/faceLift.jpg", 
+        "name": "Face Lifting", 
+        "price": "100", 
+        "description": "Although its a nonsurgical cosmetic treatment, but noninvasive procedures can be very effective at targeting loss of facial volume and deep creases"
+    },
+    {"id": 4, 
+        "img": "https://i.ibb.co/sQLCSb4/rair-Removal.jpg", 
+        "name": "Hair Removal", 
+        "price": "100", 
+        "description": "Remove All your unwanted hair effectively. We safely and effectively treats all skin types, both male and female."
+    }
+]
