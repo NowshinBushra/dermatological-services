@@ -1,17 +1,44 @@
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
 
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
+
+
+const provider = new GoogleAuthProvider();
 const Login = () => {
+    const navigate = useNavigate();
+
+    const googleAuth = () => {
+
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            
+            const user = result.user;
+            navigate('/home');
+        }).catch((error) => {
+            
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            
+            const email = error.email;
+           
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            
+        });
+    }
+
     const emailRef = useRef('');
     const passwordRef = useRef('');
-    const navigate = useNavigate();
+    
+    
 
     const handleSubmit = event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-
+        signInWithEmailAndPassword(auth, email, password)
 
     }
 
@@ -24,7 +51,7 @@ const Login = () => {
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control ref={emailRef} className='w-50' type="email" placeholder="Enter email" required/>
+                    <Form.Control ref={emailRef} className='w-50' type="email" placeholder="Enter email" required />
                     <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                     </Form.Text>
@@ -32,7 +59,7 @@ const Login = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control ref={passwordRef} className='w-50' type="password" placeholder="Password" required/>
+                    <Form.Control ref={passwordRef} className='w-50' type="password" placeholder="Password" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
@@ -42,6 +69,7 @@ const Login = () => {
                 </Button>
             </Form>
             <p>Don't have an account? <Link to='/signup' className='text-danger pe-auto text-decoration-none' onClick={navigateSignup}>Please Sign Up</Link> </p>
+            <button className='' onClick={googleAuth}><p>Continue With Google</p></button>
         </div>
     );
 };
