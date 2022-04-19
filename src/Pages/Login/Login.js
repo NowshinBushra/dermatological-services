@@ -9,7 +9,7 @@ import auth from '../../firebase.init';
 const provider = new GoogleAuthProvider();
 const Login = () => {
     const navigate = useNavigate();
-
+ 
     const googleAuth = () => {
 
         signInWithPopup(auth, provider)
@@ -39,6 +39,14 @@ const Login = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            
+            const user = userCredential.user;
+         })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
 
     }
 
@@ -69,7 +77,7 @@ const Login = () => {
                 </Button>
             </Form>
             <p>Don't have an account? <Link to='/signup' className='text-danger pe-auto text-decoration-none' onClick={navigateSignup}>Please Sign Up</Link> </p>
-            <button className='' onClick={googleAuth}><p>Continue With Google</p></button>
+            <button  className='btn btn-primary pb-0' onClick={googleAuth}><p>Continue With Google</p></button>
         </div>
     );
 };

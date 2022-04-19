@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import auth from '../../../firebase.init';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, signInWithPopup } from "firebase/auth";
+
 
 const provider = new GoogleAuthProvider();
 
@@ -19,23 +20,23 @@ const SignUp = () => {
     const googleAuth = () => {
 
         signInWithPopup(auth, provider)
-        .then((result) => {
-            
-            const user = result.user;
-            navigate('/');
-        }).catch((error) => {
-            
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            
-            const email = error.email;
-           
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            
-        });
+            .then((result) => {
+
+                const user = result.user;
+                navigate('/');
+            }).catch((error) => {
+
+                const errorCode = error.code;
+                const errorMessage = error.message;
+
+                const email = error.email;
+
+                const credential = GoogleAuthProvider.credentialFromError(error);
+
+            });
     }
 
-    
+
     const navigateLogin = () => {
         navigate('/login');
     }
@@ -46,10 +47,27 @@ const SignUp = () => {
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-        createUserWithEmailAndPassword(auth, email, password);
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
 
+            const user = userCredential.user;
+            console.log('signed in');
+         })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+           
+          });
+        verifyEmail();
     };
 
+
+    const verifyEmail = () => {
+        sendEmailVerification(auth.currentUser)
+            .then(() => {
+                console.log('verification');
+            })
+    }
 
     return (
         <div className='signup-form mt-5'>
@@ -61,7 +79,7 @@ const SignUp = () => {
                 <input type="submit" value="Sign Up" />
             </form>
             <p>Already have an account? <Link to='/login' className='text-danger pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</Link> </p>
-            <button className='' onClick={googleAuth}><p>Continue With Google</p></button>
+            <button className='btn btn-primary pb-0' onClick={googleAuth}><p>Continue With Google</p></button>
         </div>
     );
 };

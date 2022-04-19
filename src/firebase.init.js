@@ -6,12 +6,12 @@ import {getAuth} from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC2NubqVixxL-EbEq-cAZu0s8Fb3aq64Aw",
-  authDomain: "dermatological-services.firebaseapp.com",
-  projectId: "dermatological-services",
-  storageBucket: "dermatological-services.appspot.com",
-  messagingSenderId: "198871773244",
-  appId: "1:198871773244:web:191779df6f2a5489505339"
+  apiKey:process.env.REACT_APP_apiKey, 
+  authDomain:process.env.REACT_APP_authDomain, 
+  projectId:process.env.REACT_APP_projectId,
+  storageBucket:process.env.REACT_APP_storageBucket, 
+  messagingSenderId:process.env.REACT_APP_messagingSenderId, 
+  appId:process.env.REACT_APP_appId, 
 };
 
 // Initialize Firebase
