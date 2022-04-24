@@ -1,23 +1,23 @@
+import { sendEmailVerification } from 'firebase/auth';
 import React from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Social from '../Social/Social';
-import './SignUp.css'
+import './SignUp.css';
 
 const SignUp = () => {
     const navigate = useNavigate();
-    const location = useLocation();
-    let from = location.state?.from?.pathname || "/";
+    
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
       
       if(user){
-        navigate(from, { replace: true });
+        navigate('/home');
      }
     
 
@@ -27,7 +27,7 @@ const SignUp = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         
-        createUserWithEmailAndPassword(email, password)
+        createUserWithEmailAndPassword(email, password);
 
 }
 const navigateLogin = () =>{
