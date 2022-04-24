@@ -1,85 +1,54 @@
-import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './SignUp.css';
+import React from 'react';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, signInWithPopup } from "firebase/auth";
-
-
-const provider = new GoogleAuthProvider();
+import Social from '../Social/Social';
+import './SignUp.css'
 
 const SignUp = () => {
-    // const [
-    //     createUserWithEmailAndPassword,
-    //     user,
-    //     loading,
-    //     error,
-    //   ] = useCreateUserWithEmailAndPassword(auth);
-
     const navigate = useNavigate();
-
-    const googleAuth = () => {
-
-        signInWithPopup(auth, provider)
-            .then((result) => {
-
-                const user = result.user;
-                navigate('/');
-            }).catch((error) => {
-
-                const errorCode = error.code;
-                const errorMessage = error.message;
-
-                const email = error.email;
-
-                const credential = GoogleAuthProvider.credentialFromError(error);
-
-            });
-    }
-
-
-    const navigateLogin = () => {
-        navigate('/login');
-    }
-
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth);
+      
+      if(user){
+        navigate(from, { replace: true });
+     }
+    
 
     const handleSignup = (event) => {
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        
+        createUserWithEmailAndPassword(email, password)
 
-            const user = userCredential.user;
-            console.log('signed in');
-         })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-           
-          });
-        verifyEmail();
-    };
-
-
-    const verifyEmail = () => {
-        sendEmailVerification(auth.currentUser)
-            .then(() => {
-                console.log('verification');
-            })
-    }
+}
+const navigateLogin = () =>{
+    navigate('/login');
+}
 
     return (
         <div className='signup-form mt-5'>
-            <h2 className='mb-4'>Please Sign Up</h2>
+            <h2>Please Sign Up</h2>
             <form onSubmit={handleSignup}>
-                <input type="text" name='name' id='' placeholder='Your Name' />
-                <input type="email" name='email' id='' placeholder='Email Address' required />
-                <input type="password" name='password' id='' placeholder='Password' required />
+                <input type="text" name="name" id="" placeholder='Your Name'/>
+
+                <input type="email" name="email" id="" placeholder='Email Address' required/>
+
+                <input type="password" name="password" id="" placeholder='Password' required/>
+
                 <input type="submit" value="Sign Up" />
+
             </form>
             <p>Already have an account? <Link to='/login' className='text-danger pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</Link> </p>
-            <button className='btn btn-primary pb-0' onClick={googleAuth}><p>Continue With Google</p></button>
+            <Social></Social>
         </div>
     );
 };
