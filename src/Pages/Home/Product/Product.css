@@ -1,24 +1,23 @@
-.service{
+.product{
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 30px;
     margin-left: 70px;
-   box-shadow: 0px 2px 5px #ddced1;
+   box-shadow: 0px 2px 5px #d4dfe0;
    padding-left: 15px;
 }
-.service img{
+.product img{
     width: 60%;
-    margin-top: -60px;
-    border: 2px solid #fad7de;
+    margin-top: -40px;
     
 }
-.service-details button{
+.product-details button{
     border: none;
-    background-color: #e4b1bb;
+    background-color: #b1c9cc;
     border-radius: 5px;
 }
 @media screen and (max-width:576px){
-    .service{
+    .product{
         margin-left: 20px;
         margin-bottom: 80px;
     }

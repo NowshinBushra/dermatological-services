@@ -1,0 +1,24 @@
+.product-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    margin: auto;
+}
+.product-title{
+    text-align: center;
+    color: #2f8888;
+    margin-bottom: 100px;
+}
+.products{
+    background-color: #f5fafa;
+    margin-bottom: 150px;
+    margin-top: 50px;
+}
+
+/* responsive service */
+
+@media screen and (max-width:576px){
+    .product-container{
+       grid-template-columns: repeat(1, 1fr)
+    }
+}

@@ -1,0 +1,32 @@
+[
+    {"id": 1, 
+     "img": "https://i.ibb.co/YLxrPFH/image-34.png", 
+     "name": "Day Cream",
+     "description": "Oil-free day cream is lightweight, but gives moisture.", 
+     "price": "60" 
+     
+    },
+
+    {"id": 2, 
+        "img": "https://i.ibb.co/XbkVL85/image-33-1.png", 
+        "name": "Anti Aging Cream",
+        "description": "Anti Aging cream leaves the skin feeling and looking fresh.",
+        "price": "75"
+    },
+    {"id": 3, 
+        "img": "https://i.ibb.co/8D57Qvy/image-32.png", 
+        "name": "Multi Active Night", 
+        "description": "Night Cream with light texture and nourishing feel.",
+        "price": "50"
+    },
+    {"id": 4, 
+        "img": "https://i.ibb.co/TWknjdP/image-31.png", 
+        "name": "Facial Hydrating Cream", 
+        "description": "Excellent for combination to oily skin day cream.",
+        "price": "65"
+    }
+]
+
+
+
+
