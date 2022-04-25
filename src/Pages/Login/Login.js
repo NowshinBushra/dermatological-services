@@ -13,6 +13,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
+    let errorElement;
 
     const [
         signInWithEmailAndPassword,
@@ -23,8 +24,13 @@ const Login = () => {
 
       const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
+
       if(user){
         navigate(from, { replace: true });
+      }
+
+      if (error) {
+        errorElement = <p className='text-danger'>Error: {error?.message}</p>
       }
 
     const handleSubmit = event => {
@@ -63,8 +69,9 @@ const Login = () => {
                     <Form.Control ref={passwordRef} type="password" placeholder="Password" required/>
                 </Form.Group>
                 
-                <Button variant="primary" type="submit">Login</Button>
+                <Button variant="primary w-2/5 mx-auto d-block mb-4 w-sm-50" type="submit">Login</Button>
             </Form>
+            {errorElement}
             <p>Forgot Your Password? <button className='btn btn-link text-danger pe-auto text-decoration-none' onClick={resetPassword}>Reset Password</button> </p>
             <p>Don't have an account? <Link to='/signup' className='text-primary pe-auto text-decoration-none' onClick={navigateSignup}>Please Sign Up</Link> </p>
             

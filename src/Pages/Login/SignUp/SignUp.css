@@ -1,12 +1,6 @@
-.signup-form{
-    margin: 0 auto;
-    width: 50%;
-}
-.signup-form input{
-    display: block;
-    width: 70%;
+
+.signup-inputs{
     height: 40px;
-    padding-left: 10px;
-    font-size: 18px;
+    font-size: 15px;
     margin-bottom: 15px;
 }

@@ -35,22 +35,26 @@ const SignUp = () => {
     }
 
     return (
-        <div className='signup-form mt-5'>
+        <div className='mt-5 d-flex align-items-center justify-content-center'>
+            <div>
             <h2>Please Sign Up</h2>
             <form onSubmit={handleSignup}>
-                
-                    <input type="text" name="name" id="" placeholder='Your Name' />
+                <div>
+                    <input type="text" name="name" id="" placeholder='Your Name' /><br />
 
-                    <input type="email" name="email" id="" placeholder='Email Address' required />
+                    <input className='my-2' type="email" name="email" id="" placeholder='Email Address' required /><br />
 
                     <input type="password" name="password" id="" placeholder='Password' required />
-                
-                    <input className='w-25 btn btn-primary mb-5' type="submit" value="Sign Up" />
-                
+                </div>
+
+
+                <input className='w-2/5 btn btn-primary my-3' type="submit" value="Sign Up" />
+
 
             </form>
             <p>Already have an account? <Link to='/login' className='text-danger pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</Link> </p>
             <Social></Social>
+            </div>
         </div>
     );
 };
