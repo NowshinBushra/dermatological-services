@@ -3,7 +3,7 @@
 Happy Dermatology
 
 ## Live Website Link
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [https://dermatological-services.web.app/](https://dermatological-services.web.app/) to view it in your browser.
 
 ## Website Features and Functions
 * This website homepage includes navigation bar, banner, service container and footer.
